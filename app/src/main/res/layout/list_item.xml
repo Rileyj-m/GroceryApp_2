@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/item_name"
         android:layout_marginBottom="2sp"
-        android:textColor="#A9E0f4"
+        android:textColor="@color/number"
         android:textStyle="bold"/>
 
     <TextView
