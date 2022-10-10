@@ -3,13 +3,11 @@ package com.example.grocery_shopping_list
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.grocery_shopping_list.listAdapter.ListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -43,6 +41,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun hidekeyboard(view: View){
+        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.applicationWindowToken, 0)
+    }
+
     private fun onClickAddItem(){
         val text = input.text.toString()
 
@@ -53,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             addItem(text)
             input.setText("")
             makeToast("added: $text")
+            hidekeyboard(input)
         }
     }
 
