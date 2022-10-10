@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -24,9 +25,24 @@ class ListAdapter(private var list: MutableList<String>)
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view), View.OnLongClickListener {
         val textView: TextView = view.findViewById(R.id.item_name)
+        val textViewList: TextView = view.findViewById(R.id.number)
+        val duplicate: ImageView = view.findViewById(R.id.copy)
+        val remove: ImageView = view.findViewById(R.id.remove)
 
         init {
             view.setOnLongClickListener(this)
+
+            duplicate.setOnClickListener{
+                makeToast("Duplicated: " + list[view?.tag as Int])
+                list.add(textView.text as String)
+                notifyDataSetChanged()
+            }
+
+            remove.setOnClickListener{
+                makeToast("Removed: " + list[view?.tag as Int])
+                list.removeAt(view?.tag as Int)
+                notifyDataSetChanged()
+            }
         }
 
         override fun onLongClick(view: View?): Boolean {
@@ -62,6 +78,7 @@ class ListAdapter(private var list: MutableList<String>)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
             holder.textView.text = list[position]
+            holder.textViewList.text = "${position + 1}."
             tag = position
         }
     }
