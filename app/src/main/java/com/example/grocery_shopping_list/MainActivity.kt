@@ -1,0 +1,72 @@
+package com.example.grocery_shopping_list
+
+import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.grocery_shopping_list.listAdapter.ListAdapter
+import kotlinx.android.synthetic.main.activity_main.*
+
+class MainActivity : AppCompatActivity() {
+    lateinit var adapter: ListAdapter
+    var items = mutableListOf<String>()
+
+    lateinit var input : EditText
+    lateinit var enter : ImageView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        input = findViewById(R.id.input)
+        enter = findViewById(R.id.add)
+
+        items.add("apples")
+        items.add("Oranges")
+        items.add("Milk")
+        items.add("Chocolate")
+        items.add("OJ")
+        items.add("American Cheese")
+        items.add("1 lb hamburger")
+
+        adapter = ListAdapter(items)
+        listview.adapter = adapter
+        listview.layoutManager = LinearLayoutManager(this)
+
+        enter.setOnClickListener {
+            onClickAddItem()
+        }
+    }
+
+    private fun onClickAddItem(){
+        val text = input.text.toString()
+
+        if(text == null || text.isEmpty()){
+            makeToast("Enter an item.")
+        }
+        else{
+            addItem(text)
+            input.setText("")
+            makeToast("added: $text")
+        }
+    }
+
+    private fun addItem(item : String){
+        items.add(item)
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun makeToast(s : String){
+        val mytoast = Toast(this)
+        if (mytoast != null){
+            mytoast.cancel()
+        }
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
+    }
+}
