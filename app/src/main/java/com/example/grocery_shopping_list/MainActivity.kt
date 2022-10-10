@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     lateinit var adapter: ListAdapter
     var items = mutableListOf<String>()
+    var toastMessage: Toast? = null
 
     lateinit var input : EditText
     lateinit var enter : ImageView
@@ -66,10 +67,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun makeToast(s : String){
-        val mytoast = Toast(this)
-        if (mytoast != null){
-            mytoast.cancel()
-        }
-        Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
+        toastMessage?.cancel()
+        toastMessage = Toast.makeText(this, s, Toast.LENGTH_SHORT)
+        toastMessage?.show()
     }
 }

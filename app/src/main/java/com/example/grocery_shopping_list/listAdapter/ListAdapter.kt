@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.list_item.view.*
 
 class ListAdapter(private var list: MutableList<String>)
     : RecyclerView.Adapter<ListAdapter.ViewHolder>(){
+    var toastMessage: Toast? = null
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view), View.OnLongClickListener {
         val textView: TextView = view.findViewById(R.id.item_name)
@@ -53,11 +54,9 @@ class ListAdapter(private var list: MutableList<String>)
         }
 
         private fun makeToast(s : String){
-            val mytoast = Toast(textView.context)
-            if (mytoast != null){
-                mytoast.cancel()
-            }
-            Toast.makeText(textView.context, s, Toast.LENGTH_SHORT).show()
+            toastMessage?.cancel()
+            toastMessage = Toast.makeText(textView.context, s, Toast.LENGTH_SHORT)
+            toastMessage?.show()
         }
     }
 
