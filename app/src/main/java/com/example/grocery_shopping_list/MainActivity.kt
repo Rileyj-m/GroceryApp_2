@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         adapter = ListAdapter(items)
         listview.adapter = adapter
         listview.layoutManager = LinearLayoutManager(this)
-
         enter.setOnClickListener {
             onClickAddItem()
         }
