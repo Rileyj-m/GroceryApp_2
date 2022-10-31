@@ -41,13 +41,16 @@ class MainListFragment : Fragment() {
         binding.add.setOnClickListener{
             addListItem()
         }
+        binding.isactivated.text = "Grocery List Mode"
         binding.createRecipe.setOnClickListener{
             if(isChecked){
                 makeToast("You left recipe mode!")
                 isChecked = false
+                binding.isactivated.text = "Grocery List Mode"
             }else{
                 isChecked = true
                 makeToast("You are in recipe mode!")
+                binding.isactivated.text = "Recipe Mode"
             }
         }
         val recyclerView = binding.listview

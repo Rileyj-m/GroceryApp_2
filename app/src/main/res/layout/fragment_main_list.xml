@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:ems="10"
-            android:hint="Enter Item"
+            android:hint="@string/inputtext"
             android:imeOptions="actionDone" />
         <ImageView
             android:layout_width="40sp"
@@ -41,6 +41,16 @@
             tools:ignore="UseSwitchCompatOrMaterialXml"
             android:id="@+id/createRecipe">
         </Switch>
+        <TextView
+            android:layout_width="45sp"
+            android:layout_height="25sp"
+            android:textSize="10sp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@id/createRecipe"
+            android:layout_alignRight="@id/createRecipe"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="65sp"
+            android:id="@+id/isactivated"/>
 
     </RelativeLayout>
 

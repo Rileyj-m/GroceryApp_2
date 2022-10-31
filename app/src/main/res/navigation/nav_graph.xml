@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainListFragment"
         android:name="com.example.grocery_shopping_list.MainListFragment"
-        android:label="MainListFragment"
+        android:label="Grocery List"
         tools:layout="@layout/fragment_main_list">
         <action
             android:id="@+id/action_mainListFragment_to_groceryListFragment"
@@ -17,14 +17,14 @@
     <fragment
         android:id="@+id/groceryListFragment"
         android:name="com.example.grocery_shopping_list.GroceryListFragment"
-        android:label="GroceryListFragment"
+        android:label="Recipe List"
         tools:layout="@layout/fragment_grocery_list">
         <argument
             android:name="item"
             app:argType="com.example.grocery_shopping_list.Item" />
         <argument
             android:name="itemName"
-            app:argType="string"/>
+            app:argType="string" />
         <action
             android:id="@+id/action_groceryListFragment_to_mainListFragment"
             app:destination="@id/mainListFragment" />
