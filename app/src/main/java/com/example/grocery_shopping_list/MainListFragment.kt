@@ -85,7 +85,7 @@ class MainListFragment : Fragment() {
         var text = input.text.toString()
 
         if(isChecked){
-            text += " (Recipe) "
+            text += " " + String(Character.toChars(0x1F4CB))
         }
 
         if(text == null || text.isEmpty()){
