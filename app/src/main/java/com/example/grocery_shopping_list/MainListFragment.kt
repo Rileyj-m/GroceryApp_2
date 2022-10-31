@@ -92,10 +92,8 @@ class MainListFragment : Fragment() {
     }
 
     private fun deleteListItem(item: Item): Boolean{
-        val input = binding.root.findViewById<TextView>(R.id.input)
-        val text = input.text.toString()
         viewModel.deleteItemFromGroceryList(item)
-        makeToast("Deleted: ${text.toString()}")
+        makeToast("Deleted: ${item.itemName}")
 
         return true
     }
