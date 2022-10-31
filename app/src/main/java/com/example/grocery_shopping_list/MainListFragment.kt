@@ -1,5 +1,7 @@
 package com.example.grocery_shopping_list
 
+import android.graphics.Color
+import android.icu.text.UnicodeSet
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -80,7 +82,11 @@ class MainListFragment : Fragment() {
 
     private fun addListItem(){
         val input = binding.root.findViewById<TextView>(R.id.input)
-        val text = input.text.toString()
+        var text = input.text.toString()
+
+        if(isChecked){
+            text += " (Recipe) "
+        }
 
         if(text == null || text.isEmpty()){
             makeToast("Enter an item.")
