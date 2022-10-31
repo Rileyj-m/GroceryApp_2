@@ -31,6 +31,17 @@
             android:layout_centerVertical="true"
             android:src="@drawable/add_item"/>
 
+        <Switch
+            android:layout_width="45sp"
+            android:layout_height="22sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_toStartOf="@+id/input"
+            android:layout_marginRight="10sp"
+            tools:ignore="UseSwitchCompatOrMaterialXml"
+            android:id="@+id/createRecipe">
+        </Switch>
+
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

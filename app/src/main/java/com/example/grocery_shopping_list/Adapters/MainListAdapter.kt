@@ -96,7 +96,6 @@ class MainListAdapter(
         fun bind(item: Item, position: Int){
             binding.itemName.text = item.itemName.toString()
             binding.number.text = position.toString()
-
         }
     }
 

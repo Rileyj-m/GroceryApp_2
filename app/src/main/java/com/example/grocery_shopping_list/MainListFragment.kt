@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
@@ -12,11 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.grocery_shopping_list.databinding.FragmentMainListBinding
 import com.example.grocery_shopping_list.Adapters.MainListAdapter
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import kotlinx.android.synthetic.main.list_item.*
 
 /**
  * A simple [Fragment] subclass.
@@ -28,6 +25,7 @@ class MainListFragment : Fragment() {
     private var toastMessage: Toast? = null
     private var _binding: FragmentMainListBinding? = null
     private val binding get() = _binding!!
+    private var isChecked = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,14 +41,24 @@ class MainListFragment : Fragment() {
         binding.add.setOnClickListener{
             addListItem()
         }
-
+        binding.createRecipe.setOnClickListener{
+            if(isChecked){
+                makeToast("You left recipe mode!")
+                isChecked = false
+            }else{
+                isChecked = true
+                makeToast("You are in recipe mode!")
+            }
+        }
         val recyclerView = binding.listview
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val clicked = { item: Item ->
-            val action =
-                MainListFragmentDirections.actionMainListFragmentToGroceryListFragment(item, item.itemName)
-            findNavController().navigate(action)
+        var clicked = { item: Item ->
+            if(isChecked){
+                val action =
+                    MainListFragmentDirections.actionMainListFragmentToGroceryListFragment(item, item.itemName)
+                findNavController().navigate(action)
+            }
         }
 
         val longClick = {item: Item ->
@@ -84,14 +92,10 @@ class MainListFragment : Fragment() {
     }
 
     private fun deleteListItem(item: Item): Boolean{
-        viewModel.deleteItemFromGroceryList(item)
-
         val input = binding.root.findViewById<TextView>(R.id.input)
         val text = input.text.toString()
-        val newItem = Item(text, mutableListOf())
-        viewModel.addItemToGroceryList(newItem)
-        input.setText("")
-        makeToast("added: $text")
+        viewModel.deleteItemFromGroceryList(item)
+        makeToast("Deleted: ${text.toString()}")
 
         return true
     }
