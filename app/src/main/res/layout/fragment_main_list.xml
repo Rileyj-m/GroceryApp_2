@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainListFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:ems="10"
-            android:hint="Enter Item"
+            android:hint="@string/inputtext"
             android:imeOptions="actionDone" />
         <ImageView
             android:layout_width="40sp"
@@ -30,6 +30,27 @@
             android:layout_marginLeft="7sp"
             android:layout_centerVertical="true"
             android:src="@drawable/add_item"/>
+
+        <Switch
+            android:layout_width="45sp"
+            android:layout_height="22sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_toStartOf="@+id/input"
+            android:layout_marginRight="10sp"
+            tools:ignore="UseSwitchCompatOrMaterialXml"
+            android:id="@+id/createRecipe">
+        </Switch>
+        <TextView
+            android:layout_width="45sp"
+            android:layout_height="25sp"
+            android:textSize="10sp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@id/createRecipe"
+            android:layout_alignRight="@id/createRecipe"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="65sp"
+            android:id="@+id/isactivated"/>
 
     </RelativeLayout>
 

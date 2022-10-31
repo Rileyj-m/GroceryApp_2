@@ -24,31 +24,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="#000"
         android:textSize="28sp"/>
-
-    <ImageView
-        android:layout_width="22sp"
-        android:layout_height="22sp"
-        android:id="@+id/copy"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/remove"
-        android:layout_marginRight="18sp"
-        android:src="@drawable/copy"
-        />
-
-    <ImageView
-        android:layout_width="22sp"
-        android:layout_height="22sp"
-        android:id="@+id/remove"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="18sp"
-        android:src="@drawable/remove"
-        android:layout_alignParentRight="true"
-        />
-
-    <Switch
-        android:layout_width="295sp"
-        android:layout_height="39sp"
-        tools:ignore="UseSwitchCompatOrMaterialXml"
-        android:id="@+id/createRecipe">
-    </Switch>
 </RelativeLayout>

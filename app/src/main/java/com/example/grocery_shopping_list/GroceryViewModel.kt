@@ -15,10 +15,8 @@ class GroceryViewModel : ViewModel() {
     }
 
     fun addItemToGroceryList(item: Item){
-        if(_list.value?.contains(item) == false){
-            _list.value?.add(item)
-            _list.value = _list.value
-        }
+        _list.value?.add(item)
+        _list.value = _list.value
     }
 
     fun deleteItemFromGroceryList(item: Item){

@@ -96,7 +96,6 @@ class MainListAdapter(
         fun bind(item: Item, position: Int){
             binding.itemName.text = item.itemName.toString()
             binding.number.text = position.toString()
-
         }
     }
 
@@ -116,6 +115,7 @@ class MainListAdapter(
             val position = viewHolder.adapterPosition
             onItemLongClick(getItem(position))
         }
+
         return viewHolder
     }
 
