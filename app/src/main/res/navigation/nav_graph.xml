@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/mainListFragment">
 
     <fragment
         android:id="@+id/mainListFragment"
         android:name="com.example.grocery_shopping_list.MainListFragment"
-        android:label="MainListFragment" >
+        android:label="MainListFragment"
+        tools:layout="@layout/fragment_main_list">
         <action
             android:id="@+id/action_mainListFragment_to_groceryListFragment"
             app:destination="@id/groceryListFragment" />
@@ -15,7 +17,14 @@
     <fragment
         android:id="@+id/groceryListFragment"
         android:name="com.example.grocery_shopping_list.GroceryListFragment"
-        android:label="GroceryListFragment" >
+        android:label="GroceryListFragment"
+        tools:layout="@layout/fragment_grocery_list">
+        <argument
+            android:name="item"
+            app:argType="com.example.grocery_shopping_list.Item" />
+        <argument
+            android:name="itemName"
+            app:argType="string"/>
         <action
             android:id="@+id/action_groceryListFragment_to_mainListFragment"
             app:destination="@id/mainListFragment" />

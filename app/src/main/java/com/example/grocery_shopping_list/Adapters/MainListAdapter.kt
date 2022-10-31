@@ -116,6 +116,7 @@ class MainListAdapter(
             val position = viewHolder.adapterPosition
             onItemLongClick(getItem(position))
         }
+
         return viewHolder
     }
 

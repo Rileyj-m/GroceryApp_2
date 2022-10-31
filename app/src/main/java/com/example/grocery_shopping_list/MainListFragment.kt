@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
@@ -49,7 +48,9 @@ class MainListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val clicked = { item: Item ->
-            findNavController().navigate(R.id.action_mainListFragment_to_groceryListFragment)
+            val action =
+                MainListFragmentDirections.actionMainListFragmentToGroceryListFragment(item, item.itemName)
+            findNavController().navigate(action)
         }
 
         val longClick = {item: Item ->
@@ -84,6 +85,14 @@ class MainListFragment : Fragment() {
 
     private fun deleteListItem(item: Item): Boolean{
         viewModel.deleteItemFromGroceryList(item)
+
+        val input = binding.root.findViewById<TextView>(R.id.input)
+        val text = input.text.toString()
+        val newItem = Item(text, mutableListOf())
+        viewModel.addItemToGroceryList(newItem)
+        input.setText("")
+        makeToast("added: $text")
+
         return true
     }
 
