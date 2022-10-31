@@ -1,26 +1,15 @@
-package com.example.grocery_shopping_list.listAdapter
+package com.example.grocery_shopping_list.Adapters
 
-import android.content.Context
-import android.system.Os.bind
-import android.text.InputType
-import android.util.Log
-import android.util.Log.DEBUG
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.view.menu.MenuView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.grocery_shopping_list.BuildConfig.DEBUG
-import com.example.grocery_shopping_list.MainActivity
-import com.example.grocery_shopping_list.R
-import kotlinx.android.synthetic.main.list_item.view.*
+import androidx.recyclerview.widget.ListAdapter
+import com.example.grocery_shopping_list.Item
+import com.example.grocery_shopping_list.databinding.ListItemBinding
+import java.text.FieldPosition
 
-class ListAdapter(private var list: MutableList<String>)
+/*class ListAdapter(private var list: MutableList<String>)
     : RecyclerView.Adapter<ListAdapter.ViewHolder>(){
     var toastMessage: Toast? = null
 
@@ -60,9 +49,9 @@ class ListAdapter(private var list: MutableList<String>)
         }
     }
 
-    /**
+    *//**
      * Create new views (invoked by the layout manager)
-     */
+     *//*
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
@@ -71,9 +60,9 @@ class ListAdapter(private var list: MutableList<String>)
         return ViewHolder(adapterLayout)
     }
 
-    /**
+    *//**
      * Replace the contents of a view (invoked by the layout manager)
-     */
+     *//*
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
             holder.textView.text = list[position]
@@ -82,10 +71,56 @@ class ListAdapter(private var list: MutableList<String>)
         }
     }
 
-    /**
+    *//**
      * Return the size of your dataset (invoked by the layout manager)
-     */
+     *//*
     override fun getItemCount() : Int{
         return list.size
     }
+}*/
+class MainListAdapter(
+    private val onItemClick: (Item) -> Unit, private val onItemLongClick: (Item) -> Boolean
+): ListAdapter<Item, MainListAdapter.ViewHolder>(DiffCallBack){
+
+    companion object DiffCallBack : DiffUtil.ItemCallback<Item>(){
+        override fun areItemsTheSame(old: Item, new: Item): Boolean {
+            return old.itemName == new.itemName
+        }
+
+        override fun areContentsTheSame(old: Item, new: Item): Boolean {
+            return old == new
+        }
+    }
+
+    class ViewHolder(private var binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Item, position: Int){
+            binding.itemName.text = item.itemName.toString()
+            binding.number.text = position.toString()
+
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder{
+        val viewHolder = ViewHolder(
+            ListItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+        viewHolder.itemView.setOnClickListener{
+            val position = viewHolder.adapterPosition
+            onItemClick(getItem(position))
+        }
+        viewHolder.itemView.setOnLongClickListener{
+            val position = viewHolder.adapterPosition
+            onItemLongClick(getItem(position))
+        }
+        return viewHolder
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position), position)
+    }
+
 }

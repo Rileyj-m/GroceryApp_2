@@ -7,12 +7,30 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.grocery_shopping_list.listAdapter.ListAdapter
+import com.example.grocery_shopping_list.Adapters.MainListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    lateinit var adapter: ListAdapter
+    private lateinit var navController: NavController
+
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val navFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navFragment.navController
+        setupActionBarWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+    /*lateinit var adapter: MainListAdapter
     var items = mutableListOf<String>()
     var toastMessage: Toast? = null
 
@@ -30,11 +48,8 @@ class MainActivity : AppCompatActivity() {
         items.add("Oranges")
         items.add("Milk")
         items.add("Chocolate")
-        items.add("OJ")
-        items.add("American Cheese")
-        items.add("1 lb hamburger")
 
-        adapter = ListAdapter(items)
+        adapter = MainListAdapter(items)
         listview.adapter = adapter
         listview.layoutManager = LinearLayoutManager(this)
         enter.setOnClickListener {
@@ -70,5 +85,5 @@ class MainActivity : AppCompatActivity() {
         toastMessage?.cancel()
         toastMessage = Toast.makeText(this, s, Toast.LENGTH_SHORT)
         toastMessage?.show()
-    }
+    }*/
 }
