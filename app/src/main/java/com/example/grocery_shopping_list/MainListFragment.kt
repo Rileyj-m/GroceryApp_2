@@ -28,6 +28,7 @@ class MainListFragment : Fragment() {
     private var _binding: FragmentMainListBinding? = null
     private val binding get() = _binding!!
     private var isChecked = false
+    private var emojiCheckList = String(Character.toChars(0x1F4CB))
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +44,12 @@ class MainListFragment : Fragment() {
         binding.add.setOnClickListener{
             addListItem()
         }
-        binding.isactivated.text = "Grocery List Mode"
+        if(isChecked){
+            binding.isactivated.text = "Recipe Mode"
+        }
+        else{
+            binding.isactivated.text = "Grocery List Mode"
+        }
         binding.createRecipe.setOnClickListener{
             if(isChecked){
                 makeToast("You left recipe mode!")
@@ -59,7 +65,7 @@ class MainListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         var clicked = { item: Item ->
-            if(isChecked){
+            if(isChecked && item.itemName.toString().contains(emojiCheckList)){
                 val action =
                     MainListFragmentDirections.actionMainListFragmentToGroceryListFragment(item, item.itemName)
                 findNavController().navigate(action)
