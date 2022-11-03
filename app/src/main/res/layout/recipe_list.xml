@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/RecipeImage"
+            android:layout_width="380sp"
+            android:layout_marginTop="15sp"
+            android:layout_height="325sp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/recipe_image_from_api">
+        </ImageView>
+
+        <RelativeLayout
+            android:layout_width="380sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp">
+
+            <TextView
+                android:id="@+id/Meal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="@string/meal"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="380sp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10sp"
+            android:background="@color/background"
+            android:padding="4sp">
+
+            <TextView
+                android:id="@+id/Category"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/test_category"
+                android:fontFamily="sans-serif"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/Area"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Test_area"
+                android:fontFamily="sans-serif"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="380sp"
+            android:layout_height="match_parent"
+            android:padding="10sp"
+            android:background="@color/background">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/possibleYoutubeLink"
+                android:text="@string/youtube_test"
+                android:fontFamily="sans-serif"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:padding="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40sp"
+            android:gravity="start"
+            android:fontFamily="sans-serif"
+            android:textSize="18sp"
+            android:text="@string/ingredients"
+            android:textStyle="bold"/>
+
+        <ListView
+            android:id="@+id/ingredientsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20sp" />
+
+        <TextView
+            android:id="@+id/measurements"
+            android:padding="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40sp"
+            android:gravity="start"
+            android:fontFamily="sans-serif"
+            android:textSize="18sp"
+            android:text="@string/measurements"
+            android:textStyle="bold"/>
+
+        <ListView
+            android:id="@+id/MeasurementsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20sp"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/instructions"
+            android:padding="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40sp"
+            android:gravity="start"
+            android:fontFamily="sans-serif"
+            android:textSize="18sp"
+            android:text="@string/instructions"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/instructionsDesc"
+            android:padding="20sp"
+            android:layout_width="380sp"
+            android:layout_height="match_parent"
+            android:gravity="start"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+            android:text="@string/instructions"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

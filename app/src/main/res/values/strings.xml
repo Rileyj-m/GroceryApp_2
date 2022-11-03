@@ -3,4 +3,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="inputtext">Enter Item</string>
+    <string name="recipe_image_from_api">Recipe image from API</string>
+    <string name="test_text">Test text</string>
+    <string name="meal">meal</string>
+    <string name="test_category">Category</string>
+    <string name="Test_area">Area</string>
+    <string name="youtube_test">Youtube_test</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="measurements">Measurements:</string>
+    <string name="instructions">Instructions:</string>
 </resources>

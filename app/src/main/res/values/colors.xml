@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#F1FEFF</color>
     <color name="background2">#ccfcff</color>
+    <color name="holderBorder">#b8b8b8</color>
     <color name="number">#A9E0f4</color>
     <color name="header">#005f66</color>
     <color name="header2">#00474d</color>
