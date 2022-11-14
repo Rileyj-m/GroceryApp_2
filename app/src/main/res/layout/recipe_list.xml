@@ -6,31 +6,21 @@
     android:padding="15sp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
-        android:id="@+id/number"
+        android:id="@+id/ingredientsItemNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/item_name"
         android:layout_marginBottom="2sp"
         android:textColor="@color/number"
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/item_name"
+        android:id="@+id/RecipeIngredient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="28sp"
-        android:textColor="#000"
-        android:textSize="28sp"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/Recipe_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="18sp"
-        android:textSize="14sp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true" />
 </RelativeLayout>

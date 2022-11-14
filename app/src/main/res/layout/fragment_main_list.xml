@@ -32,25 +32,24 @@
             android:src="@drawable/add_item"/>
 
         <Switch
+            android:id="@+id/createRecipe"
             android:layout_width="45sp"
             android:layout_height="22sp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_toStartOf="@+id/input"
+            android:layout_centerInParent="true"
             android:layout_marginRight="10sp"
-            tools:ignore="UseSwitchCompatOrMaterialXml"
-            android:id="@+id/createRecipe">
-        </Switch>
+            android:layout_toStartOf="@+id/input"
+            tools:ignore="UseSwitchCompatOrMaterialXml"></Switch>
+
         <TextView
+            android:id="@+id/isactivated"
             android:layout_width="45sp"
             android:layout_height="25sp"
-            android:textSize="10sp"
-            android:layout_centerHorizontal="true"
             android:layout_alignLeft="@id/createRecipe"
             android:layout_alignRight="@id/createRecipe"
-            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="65sp"
-            android:id="@+id/isactivated"/>
+            android:gravity="center_horizontal"
+            android:textSize="10sp" />
 
     </RelativeLayout>
 

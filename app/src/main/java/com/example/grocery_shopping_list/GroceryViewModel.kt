@@ -9,11 +9,17 @@ import com.example.grocery_shopping_list.Item
 class GroceryViewModel : ViewModel() {
     private val _list = MutableLiveData<MutableList<Item>>()
     val list: LiveData<MutableList<Item>> = _list
+    private val _listForRecipe = MutableLiveData<MutableList<String>>()
+    val listForRecipe = _listForRecipe
 
     init {
         _list.value = arrayListOf()
+        _listForRecipe.value = arrayListOf()
     }
 
+    fun updateMealRecipeName(meal: String){
+        _listForRecipe.value?.add(meal)
+    }
     fun addItemToGroceryList(item: Item){
         _list.value?.add(item)
         _list.value = _list.value
