@@ -1,15 +1,17 @@
 package com.example.grocery_shopping_list.Adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.grocery_shopping_list.Item
+import com.example.grocery_shopping_list.R
 import com.example.grocery_shopping_list.databinding.ListItemBinding
 
 class GroceryListAdapter(
-    private val onItemLongClick: (String) -> Boolean
+    private val onItemLongClick: (String) -> Boolean, private val onItemClick: (String) -> Unit
 ): ListAdapter<String, GroceryListAdapter.ViewHolder>(DiffCallBack){
 
     companion object DiffCallBack : DiffUtil.ItemCallback<String>(){
@@ -24,9 +26,12 @@ class GroceryListAdapter(
 
     class ViewHolder(private var binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String, position: Int){
-            binding.itemName.text = item
+            if(item.contains("1190102")){
+                binding.RecipeDesc.text = "Online Recipe"
+            }
+            val change = item.replace("1190102", "")
+            binding.itemName.text = change
             binding.number.text = position.toString()
-
         }
     }
 
@@ -38,6 +43,10 @@ class GroceryListAdapter(
                 false
             )
         )
+        viewHolder.itemView.setOnClickListener{
+            val position = viewHolder.adapterPosition
+            onItemClick(getItem(position))
+        }
         viewHolder.itemView.setOnLongClickListener{
             val position = viewHolder.adapterPosition
             onItemLongClick(getItem(position))

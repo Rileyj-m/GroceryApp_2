@@ -28,5 +28,20 @@
         <action
             android:id="@+id/action_groceryListFragment_to_mainListFragment"
             app:destination="@id/mainListFragment" />
+        <action
+            android:id="@+id/action_groceryListFragment_to_recipe_api_Search_Results"
+            app:destination="@id/recipe_api_Search_Results" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipe_api_Search_Results"
+        android:name="com.example.grocery_shopping_list.Recipe_api_Search_Results"
+        android:label="Recipe Search Result"
+        tools:layout="@layout/fragment_recipe_api__search__results">
+        <argument
+            android:name="RecipeName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_recipe_api_Search_Results_to_groceryListFragment"
+            app:destination="@id/groceryListFragment" />
     </fragment>
 </navigation>

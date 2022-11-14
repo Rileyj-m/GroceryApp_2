@@ -31,6 +31,26 @@
             android:layout_centerVertical="true"
             android:src="@drawable/add_item"/>
 
+        <Switch
+            android:id="@+id/SearchRecipe"
+            android:layout_width="45sp"
+            android:layout_height="22sp"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10sp"
+            android:layout_toStartOf="@+id/input"
+            tools:ignore="UseSwitchCompatOrMaterialXml"></Switch>
+
+        <TextView
+            android:id="@+id/isSearchRecipe"
+            android:layout_width="45sp"
+            android:layout_height="25sp"
+            android:layout_alignLeft="@id/SearchRecipe"
+            android:layout_alignRight="@id/SearchRecipe"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65sp"
+            android:gravity="center_horizontal"
+            android:textSize="10sp" />
+
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

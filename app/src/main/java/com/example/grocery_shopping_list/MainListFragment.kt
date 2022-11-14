@@ -3,6 +3,7 @@ package com.example.grocery_shopping_list
 import android.graphics.Color
 import android.icu.text.UnicodeSet
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -65,10 +66,11 @@ class MainListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         var clicked = { item: Item ->
-            if(isChecked && item.itemName.toString().contains(emojiCheckList)){
+            if((isChecked && item.itemName.toString().contains(emojiCheckList)) || item.itemName.toString().contains(emojiCheckList)){
                 val action =
                     MainListFragmentDirections.actionMainListFragmentToGroceryListFragment(item, item.itemName)
                 findNavController().navigate(action)
+                Log.i("ITENAME", item.itemName)
             }
         }
 
@@ -90,7 +92,7 @@ class MainListFragment : Fragment() {
         val input = binding.root.findViewById<TextView>(R.id.input)
         var text = input.text.toString()
 
-        if(isChecked){
+        if(isChecked && !text.isEmpty()){
             text += " " + String(Character.toChars(0x1F4CB))
         }
 
